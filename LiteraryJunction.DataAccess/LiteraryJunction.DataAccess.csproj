@@ -1,10 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Literary_Junction</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +13,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LiteraryJunction.DataAccess\LiteraryJunction.DataAccess.csproj" />
+    <ProjectReference Include="..\LiteraryJunction.Models\LiteraryJunction.Models.csproj" />
+    <ProjectReference Include="..\LiteraryJunction.Utility\LiteraryJunction.Utility.csproj" />
   </ItemGroup>
 
 </Project>

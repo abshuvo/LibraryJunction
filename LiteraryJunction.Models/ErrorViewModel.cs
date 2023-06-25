@@ -1,4 +1,4 @@
-namespace Literary_Junction.Models
+namespace LiteraryJunction.Models
 {
     public class ErrorViewModel
     {

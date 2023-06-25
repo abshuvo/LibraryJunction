@@ -1,4 +1,5 @@
-﻿using Literary_Junction.Models;
+﻿using Literary_Junction;
+using LiteraryJunction.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

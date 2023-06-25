@@ -1,4 +1,5 @@
-using Literary_Junction.Data;
+using Literary_Junction;
+using LiteraryJunction.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

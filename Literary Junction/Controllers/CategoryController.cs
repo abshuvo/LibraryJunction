@@ -1,5 +1,6 @@
-﻿using Literary_Junction.Data;
-using Literary_Junction.Models;
+﻿using Literary_Junction;
+using LiteraryJunction.DataAccess.Data;
+using LiteraryJunction.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Literary_Junction.Controllers

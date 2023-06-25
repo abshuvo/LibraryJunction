@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Literary_Junction.Models
+namespace LiteraryJunction.Models
 {
     public class Category
     {
@@ -10,9 +10,9 @@ namespace Literary_Junction.Models
         [Required]
         [DisplayName("Category Name")]
         [MaxLength(30)]
-        public string?Name { get; set; }
+        public string? Name { get; set; }
         [DisplayName("Display Order")]
-        [Range(1, 100,ErrorMessage ="Order Should be 1 to 100")]
+        [Range(1, 100, ErrorMessage = "Order Should be 1 to 100")]
         public int DisplayOrder { get; set; }
     }
 }

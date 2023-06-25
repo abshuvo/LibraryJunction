@@ -1,7 +1,7 @@
-﻿using Literary_Junction.Models;
+﻿using LiteraryJunction.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Literary_Junction.Data
+namespace LiteraryJunction.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
