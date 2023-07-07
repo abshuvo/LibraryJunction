@@ -27,13 +27,13 @@ namespace LiteraryJunction.DataAccess.Repository.IRepository
         public T Get(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = dbSet;
-            query=query.Where(filter);
+            query = query.Where(filter);
             return query.FirstOrDefault();
         }
 
         public IEnumerable<T> GetAll()
         {
-            IQueryable<T> query =dbSet;
+            IQueryable<T> query = dbSet;
             return query.ToList();
         }
 
@@ -44,7 +44,7 @@ namespace LiteraryJunction.DataAccess.Repository.IRepository
 
         public void RemoveRange(IEnumerable<T> entity)
         {
-           dbSet.RemoveRange(entity);
+            dbSet.RemoveRange(entity);
         }
     }
 }

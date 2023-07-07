@@ -21,4 +21,8 @@
     <ProjectReference Include="..\LiteraryJunction.DataAccess\LiteraryJunction.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

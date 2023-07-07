@@ -1,10 +1,10 @@
-﻿using Literary_Junction;
-using LiteraryJunction.Models;
+﻿using LiteraryJunction.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Literary_Junction.Controllers
+namespace Literary_Junction.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
