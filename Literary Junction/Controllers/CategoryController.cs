@@ -1,5 +1,6 @@
 ﻿using Literary_Junction;
 using LiteraryJunction.DataAccess.Data;
+using LiteraryJunction.DataAccess.Repository.IRepository;
 using LiteraryJunction.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,14 +8,14 @@ namespace Literary_Junction.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _categoryRepo;
+        public CategoryController(ICategoryRepository db)
         {
-            _db = db;
+            _categoryRepo = db;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList=_db.Categories.ToList();
+            List<Category> objCategoryList = _categoryRepo.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -27,14 +28,14 @@ namespace Literary_Junction.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name==obj.DisplayOrder.ToString()) 
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("name","DisplayOrder and CategoryName cannot be same");
+                ModelState.AddModelError("name", "DisplayOrder and CategoryName cannot be same");
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _categoryRepo.Add(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
@@ -47,17 +48,17 @@ namespace Literary_Junction.Controllers
         //========EDIT===================
         public IActionResult Edit(int? id)
         {
-            if(id==null || id==0)
+            if (id == null || id == 0)
             {
-                return NotFound();  
+                return NotFound();
             }
 
-            Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u => u.Id==id );
             //Category? categoryFromDb2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
 
 
-            if (categoryFromDb==null)
+            if (categoryFromDb == null)
             {
                 return NotFound(categoryFromDb);
             }
@@ -69,8 +70,8 @@ namespace Literary_Junction.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _categoryRepo.Update(obj);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index");
             }
@@ -87,7 +88,7 @@ namespace Literary_Junction.Controllers
                 return NotFound();
             }
 
-            Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepo.Get(u => u.Id == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u => u.Id==id );
             //Category? categoryFromDb2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
 
@@ -98,16 +99,16 @@ namespace Literary_Junction.Controllers
             }
             return View(categoryFromDb);
         }
-        [HttpPost,ActionName("Delete")]
-        public IActionResult DeletePost( int? id)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int? id)
         {
-            Category? obj=_db.Categories.Find(id);
-            if (obj==null)
+            Category? obj = _categoryRepo.Get(u => u.Id == id);
+            if (obj == null)
             {
-                return NotFound() ;
+                return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _categoryRepo.Remove(obj);
+            _categoryRepo.Save();
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
